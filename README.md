@@ -65,3 +65,6 @@ Total expense: 5200
 3000  rent       security deposit        2018-12-02 15:44:28.739984
 ----  ---------  ----------------------  --------------------------
 ```
+
+# Contributions
+Want to contribute? Great! There's a list of features which can be added under Issues. If you have something totally new, even better! 
