@@ -67,4 +67,8 @@ Total expense: 5200
 ```
 
 # Contributions
-Want to contribute? Great! There's a list of features which can be added under Issues. If you have something totally new, even better! 
+
+Want to contribute? Great! 
+
+There's a list of features which can be added under Issues. If you have something totally new, even better! 
+
