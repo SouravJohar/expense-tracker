@@ -1,5 +1,6 @@
 # expense-tracker
 A simple API for an expense tracking application along with a multiple interfaces to use it.
+
 Watch the video here: https://youtu.be/sYBDJ15dNVc
 
 
@@ -12,7 +13,7 @@ A demonstration of programming with a database and creating an abstracted API, a
 - sqlite3 for desktop (helpful, but not necessary)
 
 ## Using the CLI
-You can use the binary directly, in `bin/`. Add the folder to your `PATH` and then just perform a initialization to use it.
+You can use the binary directly, in `bin/`. Add the folder to your `PATH` and then just perform an initialization to use it.
 
 If you're using the python file,
 ```sh
@@ -48,6 +49,7 @@ $ spent view food
 ```
 
 The first command shows you your total expenditure, along with a list of all transactions you've made.
+
 The second one is more streamlined, and gives you the details for the sepecified category.
 
 *An example output*
