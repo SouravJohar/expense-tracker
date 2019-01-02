@@ -54,10 +54,10 @@ def view(category=None):
     else:
         sql = '''
         SELECT * FROM expenses
-        '''.format(category)
+        '''
         sql2 = '''
         SELECT sum(amount) FROM expenses
-        '''.format(category)
+        '''
     c.execute(sql)
     results = c.fetchall()
     c.execute(sql2)
