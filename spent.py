@@ -1,5 +1,5 @@
 import sqlite3 as db
-
+from datetime import datetime
 
 def init():
     '''
@@ -27,19 +27,12 @@ def log(amount, category, message=""):
     category: string
     message: (optional) string
     '''
-    from datetime import datetime
     date = str(datetime.now())
+    data = (amount, category, message, date)
     conn = db.connect("spent.db")
     cur = conn.cursor()
-    sql = '''
-    insert into expenses values (
-         {},
-        '{}',
-        '{}',
-        '{}'
-        )
-    '''.format(amount, category, message, date)
-    cur.execute(sql)
+    sql = 'INSERT INTO expenses VALUES (?, ?, ?, ?)'
+    cur.execute(sql, data)
     conn.commit()
 
 
