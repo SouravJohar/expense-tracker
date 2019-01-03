@@ -1,4 +1,4 @@
-import sqlite3 as db
+import sqlite3
 from datetime import datetime
 
 def init():
@@ -6,20 +6,21 @@ def init():
     Initialize a new database to store the
     expenditures
     '''
-    conn = db.connect("spent.db")
-    cur = conn.cursor()
+    conn = sqlite3.connect('spent.db')
+    c = conn.cursor()
     sql = '''
-    create table if not exists expenses (
-        amount number,
-        category string,
-        message string,
-        date string
+    CREATE TABLE IF NOT EXISTS expenses (
+        amount INTEGER,
+        category TEXT,
+        message TEXT,
+        date TEXT
         )
     '''
-    cur.execute(sql)
+    c.execute(sql)
     conn.commit()
+    conn.close()
 
-def log(amount, category, message=""):
+def log(amount, category, message=''):
     '''
     logs the expenditure in the database.
     amount: number
@@ -28,11 +29,12 @@ def log(amount, category, message=""):
     '''
     date = str(datetime.now())
     data = (amount, category, message, date)
-    conn = db.connect("spent.db")
-    cur = conn.cursor()
+    conn = sqlite3.connect('spent.db')
+    c = conn.cursor()
     sql = 'INSERT INTO expenses VALUES (?, ?, ?, ?)'
-    cur.execute(sql, data)
+    c.execute(sql, data)
     conn.commit()
+    conn.close()
 
 def view(category=None):
     '''
@@ -40,25 +42,26 @@ def view(category=None):
     If a category is specified, it only returns info from that
     category
     '''
-    conn = db.connect("spent.db")
-    cur = conn.cursor()
+    conn = sqlite3.connect('spent.db')
+    c = conn.cursor()
     if category:
         sql = '''
-        select * from expenses where category = '{}'
+        SELECT * FROM expenses WHERE category = '{}'
         '''.format(category)
         sql2 = '''
-        select sum(amount) from expenses where category = '{}'
+        SELECT sum(amount) FROM expenses WHERE category = '{}'
         '''.format(category)
     else:
         sql = '''
-        select * from expenses
-        '''.format(category)
+        SELECT * FROM expenses
+        '''
         sql2 = '''
-        select sum(amount) from expenses
-        '''.format(category)
-    cur.execute(sql)
-    results = cur.fetchall()
-    cur.execute(sql2)
-    total_amount = cur.fetchone()[0]
+        SELECT sum(amount) FROM expenses
+        '''
+    c.execute(sql)
+    results = c.fetchall()
+    c.execute(sql2)
+    total_amount = c.fetchone()[0]
+    conn.close()
 
     return total_amount, results
