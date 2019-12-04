@@ -12,6 +12,16 @@ A demonstration of programming with a database and creating an abstracted API, a
 - tabulate
 - sqlite3 for desktop (helpful, but not necessary)
 
+To install a python package use the following command:
+
+```sh
+pip install <package_name>
+```
+
+Alternatively, to install all the packages at once, use this command:
+```sh
+pip install -r requirements.txt
+```
 ## Using the CLI
 You can use the binary directly, in `bin/`. Add the folder to your `PATH` and then just perform an initialization to use it.
 
